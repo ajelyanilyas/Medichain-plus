@@ -30,6 +30,28 @@
 
 ---
 
+## Live Interface
+
+Beyond the on-chain stack, MediChain+ ships a polished **Progressive Web App** — an animated landing page (`index.html`) that presents the full vision, plus a working **demo dApp** (`app.html`) with MetaMask integration, dark mode, and offline support. The showcase walks through the 5-layer hybrid architecture, the parametric-insurance payout flow, the multi-layer security model, and a live end-to-end patient scenario.
+
+<div align="center">
+
+<img src="docs/screenshots/hero.png" alt="MediChain+ landing page — hybrid blockchain healthcare platform" width="900"/>
+
+<br/><br/>
+
+<img src="docs/screenshots/architecture.png" alt="MediChain+ 5-layer hybrid architecture: SSI, IoT, Fabric, DeFi, Federated AI" width="900"/>
+
+<br/><br/>
+
+<img src="docs/screenshots/impact.png" alt="Impact vs traditional system — reimbursement delay, DME latency, fraud detection, functional coverage radar" width="900"/>
+
+</div>
+
+> **Run it locally:** open `index.html` in any browser for the showcase, or `app.html` for the interactive demo. Deployment is configured for Netlify (`netlify.toml`), which maps `/demo → app.html`.
+
+---
+
 ## Overview
 
 ### The Problem
