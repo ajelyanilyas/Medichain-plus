@@ -49,7 +49,7 @@ a:hover { color: #0284c7; }
 
 /* ── 3. TYPOGRAPHY ────────────────────────────────────── */
 h1,h2,h3,h4 { font-family: 'Inter', sans-serif; line-height: 1.1; }
-.font-display { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; }
+.font-display { font-family: 'Playfair Display', Georgia, serif; font-style: normal; font-weight: 800; letter-spacing: -.01em; }
 
 /* ── 4. ANIMATIONS ────────────────────────────────────── */
 @keyframes fadeInUp  { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
@@ -395,8 +395,9 @@ section { scroll-margin-top:72px; position:relative; z-index:1; }
 footer  { position:relative; z-index:1; }
 
 .section-title {
-  font-size:30px; font-weight:800; margin-bottom:10px;
-  display:flex; align-items:center; gap:14px; letter-spacing:-.5px;
+  font-family:'Playfair Display', Georgia, serif;
+  font-size:34px; font-weight:800; margin-bottom:10px;
+  display:flex; align-items:center; gap:14px; letter-spacing:-.01em;
   position:relative;
 }
 .section-title::after {

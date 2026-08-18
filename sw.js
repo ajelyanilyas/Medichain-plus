@@ -1,6 +1,6 @@
-/* MediChain+ Service Worker v4.0 — Offline support & PWA */
-const CACHE = 'medichain-v4';
-const ASSETS = ['./', './index.html', './app.html', './app.js', './app.css', './manifest.json'];
+/* MediChain+ Service Worker v5.0 — Offline support & PWA */
+const CACHE = 'medichain-v5';
+const ASSETS = ['./', './index.html', './index.css', './app.html', './app.js', './app.css', './manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(

@@ -12,7 +12,7 @@
 <meta name="description" content="Plateforme hybride Blockchain pour la santé : DME sécurisé, SSI, micro-assurance DeFi et IoT médical."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <link rel="stylesheet" href="index.css">
@@ -40,6 +40,8 @@
       </div>
       <span class="nav-divider"></span>
       <a href="app.html" class="nav-cta"><span>🚀 Démo</span></a>
+      <button id="shareIndex" aria-label="Partager" title="Partager" style="background:transparent;border:none;color:var(--muted);padding:4px 6px;border-radius:999px;cursor:pointer;font-size:13px;margin-left:4px">🔗</button>
+      <button id="printIndex" aria-label="Imprimer / PDF" title="Imprimer / PDF" style="background:transparent;border:none;color:var(--muted);padding:4px 6px;border-radius:999px;cursor:pointer;font-size:13px">🖨️</button>
       <button id="darkToggle" style="background:transparent;border:none;color:var(--muted);padding:4px 6px;border-radius:999px;cursor:pointer;font-size:13px;margin-left:4px">🌙</button>
       <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -1102,12 +1104,12 @@
       <div class="ref">
         <div class="ref-title">Deep Learning for Cyber Security Intrusion Detection with Blockchain Integration</div>
         <div class="ref-meta">Ferrag M.A. et al. (2024) — IEEE Transactions on Industrial Informatics, Vol. 20, No. 3</div>
-        <div class="ref-doi">doi: 10.1109/TII.2024.XXXXXXX</div>
+        <div class="ref-doi">IEEE Trans. Ind. Informat. · DOI à vérifier</div>
       </div>
       <div class="ref">
         <div class="ref-title">A Survey on Essential Components of a Self-Sovereign Identity</div>
         <div class="ref-meta">Mühle A. et al. (2024) — Future Generation Computer Systems, Elsevier, Vol. 155</div>
-        <div class="ref-doi">doi: 10.1016/j.future.2024.XXXXX</div>
+        <div class="ref-doi">Future Gener. Comput. Syst. · DOI à vérifier</div>
       </div>
       <div class="ref">
         <div class="ref-title">Zero-Knowledge Proofs for Set Membership: Efficient and Shorter</div>
@@ -1117,12 +1119,12 @@
       <div class="ref">
         <div class="ref-title">Decentralized PKI for Secure Internet Communications: A Blockchain Approach</div>
         <div class="ref-meta">Kim S. et al. (2024) — IEEE S&P (Symposium on Security and Privacy) 2024</div>
-        <div class="ref-doi">doi: 10.1109/SP.2024.XXXXXX</div>
+        <div class="ref-doi">IEEE S&P 2024 · DOI à vérifier</div>
       </div>
       <div class="ref">
         <div class="ref-title">Blockchain-Based Distributed Intrusion Detection System for IoT Networks</div>
         <div class="ref-meta">Liu J. et al. (2024) — Computers & Security, Elsevier, Vol. 137, JIF=4.8</div>
-        <div class="ref-doi">doi: 10.1016/j.cose.2024.XXXXXX</div>
+        <div class="ref-doi">Computers & Security · DOI à vérifier</div>
       </div>
     </div>
 
@@ -1136,7 +1138,7 @@
       <div class="ref o">
         <div class="ref-title">Smart Contract Vulnerability Detection: From Pure Neural Network to Interpretable Graph Feature</div>
         <div class="ref-meta">Zhuang Y. et al. (2023) — IEEE Transactions on Software Engineering, Vol. 49, Issue 3</div>
-        <div class="ref-doi">doi: 10.1109/TSE.2023.XXXXXX</div>
+        <div class="ref-doi">IEEE Trans. Softw. Eng. · DOI à vérifier</div>
       </div>
       <div class="ref o">
         <div class="ref-title">SoK: Decentralized Finance (DeFi) Attacks</div>
@@ -1255,18 +1257,6 @@
   burger.addEventListener('click', () => { burger.classList.toggle('open'); drawer.classList.toggle('open'); });
   function closeMenu() { burger.classList.remove('open'); drawer.classList.remove('open'); }
   document.addEventListener('click', e => { if (!burger.contains(e.target) && !drawer.contains(e.target)) closeMenu(); });
-
-  /* ── 4. Langue FR/EN ── */
-  const langBtn = document.getElementById('langToggle');
-  let lang = 'fr';
-  if (langBtn) langBtn.addEventListener('click', () => {
-    lang = lang === 'fr' ? 'en' : 'fr';
-    langBtn.textContent = '🌐 ' + (lang === 'fr' ? 'EN' : 'FR');
-    document.querySelectorAll('[data-fr]').forEach(el => {
-      const v = el.getAttribute('data-' + lang);
-      if (v) el.textContent = v;
-    });
-  });
 
   /* ── 5. Scroll animations ── */
   // Immediately mark visible — transform-only entrance, no opacity conflict
@@ -1628,6 +1618,9 @@
 
     function draw() {
       time++;
+      // Skip frames while the canvas has no size (hidden tab / 0-width viewport)
+      // — prevents non-finite values (e.g. ecg.x % 0) crashing createRadialGradient.
+      if (!W || !H) { requestAnimationFrame(draw); return; }
       ctx.clearRect(0, 0, W, H);
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const mainColor = isDark ? '56,189,248' : '14,165,233';
